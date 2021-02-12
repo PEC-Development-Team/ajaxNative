@@ -2,6 +2,10 @@
 
 Still in-progress. Applying lessons learned to our ajax class and addressing shortfalls.
 
+1. Formdata
+2. File upload/download
+3. JSON
+
 If you have ideas please create an issue(s).
 
 ```
