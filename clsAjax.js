@@ -304,7 +304,7 @@ function ajax(options)
 }
 
 
-let url = 'http://www.mickred.com/thefancast/TFC-Ep001-Logan1.mp3';
+let url = 'http://www.mickred.com/wapodcast/WAFC_Ep70_LDpt6of6.mp3';
 url = 'https://forecast.weather.gov/MapClick.php?lat=34.9943&lon=-91.9801&unit=0&lg=english&FcstType=json';
 url = 'template.html';
 ajax({
