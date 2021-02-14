@@ -51,7 +51,11 @@ class clsAjax
         }
         this.options.method = this.options.method.toLowerCase();
 
-        if(typeof this.options.success !== 'undefined')
+        if(typeof this.options.success === 'undefined')
+        {
+            console.error('error: success must be defined')
+        }
+        else
         {
             this.addOnSuccess(this.options.success);
         }
@@ -177,7 +181,8 @@ class clsAjax
         {
             //0 UNSENT, 1 OPENED, 3 LOADING OK, 4 DONE OK
             //this.request.statusText
-            this.successArr[i](e);
+            //this.successArr[i](this.request.responseText);
+            this.successArr[i](e.currentTarget.responseText);
         }
     }
     addOnError(errorFunc)
@@ -285,48 +290,31 @@ class clsAjax
         //console.log('onAbort', e, this.request.status);
     }
 }
+    
 
-function ajax(options)
-{
-    let ajax = new clsAjax(
-        {
-            url: options.url,
-            method: options.method,
-            requestType: options.requestType,
-            responseType: options.responseType,
-            auth: options.auth,
-            data: options.data,
-            success: options.success,
-            error: options.error
-        });
+/* Usage
+let templateHtml;
+let url = 'template.html';
 
-    return ajax;
-}
-
-
-let url = 'http://www.mickred.com/wapodcast/WAFC_Ep70_LDpt6of6.mp3';
-url = 'https://forecast.weather.gov/MapClick.php?lat=34.9943&lon=-91.9801&unit=0&lg=english&FcstType=json';
-url = 'template.html';
-ajax({
+let ajaxVar = new clsAjax(
+    {
         url: url,
         method: 'GET',
-        requestType: 'JSON',
-        responseType: 'JSON',
+        requestType: 'text',
+        responseType: 'text',
         auth: 'None',
-        data: 
+        data: {},
+        success: function(response)
         {
-
+            //Do stuff
+            templateHtml = response;
         },
-        success: function(e)
+        error: function(response)
         {
-            console.log('success', e);
-        },
-        error: function(e)
-        {
-            console.log('error', e);
+            console.log('error', response);
         }
     });
-
+*/
 
 
 //File Uploads
