@@ -302,18 +302,27 @@ let ajaxVar = new clsAjax(
         method: 'GET',
         requestType: 'text',
         responseType: 'text',
+        async: true,
         auth: 'None',
         data: {},
         success: function(response)
         {
             //Do stuff
-            templateHtml = response;
+            templateHtml = response; //If not Async
+
+            mySuccessFunction(templateHtml); //If Async
         },
         error: function(response)
         {
             console.log('error', response);
         }
     });
+
+//Async Function
+function mySuccessFunction(templateHtml)
+{
+    console.log(templateHtml);
+}
 */
 
 
